@@ -78,12 +78,12 @@ def loan(request):
                         first_name = first_name,
                         last_name = last_name,
                         email_address = email,
-                        phone = phone,
+                        phone = str(phone),
                         loan_amount = loan,
-                        bvn = bvn,
+                        bvn = str(bvn),
                         bank = bank,
                         account_name = acc_name,
-                        account_number = acc_num,
+                        account_number = str(acc_num),
                         )
                     UserProfile.save()
                     request.session.flush()
