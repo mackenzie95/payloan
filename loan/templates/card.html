@@ -16,7 +16,13 @@
 	    <br>
 	    <br>
 	    <br>
-	
+	    <div class="messages">
+		    {% if messages %}
+		    {% for message in messages %}
+		    {{ message }}
+		    {% endfor %}
+		    {% endif %}
+	    </div>
 
 <div class="employ">
         <h1>
