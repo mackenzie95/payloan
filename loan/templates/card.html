@@ -45,43 +45,36 @@
                      <p>If you are satisfy with the condition above click on the button to continue<br>
             </p>
           
-<form >
-  <script src="https://js.paystack.co/v1/inline.js"></script>
-  <button type="button" onclick="payWithPaystack()"> Continue </button> 
+
+<form>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <button type="button" onClick="makePayment()">Continue</button>
 </form>
-<br>
-<br>
-</div>
+
 <script>
-	var ref_ = ''+Math.floor((Math.random() * 1000000000) + 1); // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-	
-  function payWithPaystack(){
-    var handler = PaystackPop.setup({
-		    key: '{{ key }}',
-		    email: '{{ email }}',
-      amount: 100000,
-	ref: ref_,
+  function makePayment() {
+    FlutterwaveCheckout({
+		    public_key: "{{ key }}",
+      tx_ref: ''+Math.floor((Math.random() * 1000000000) + 1), 
+      amount: 1000,
       currency: "NGN",
-		    firstname: '{{ first_name }}',
-		    lastname: '{{ last_name }}',
-      // label: "Optional string that replaces customer email"
-      metadata: {
-         custom_fields: [
-            {
-                display_name: "Mobile Number",
-                variable_name: "mobile_number",
-			    value: "{{ phone }}"
-            }
-         ]
+      country: "NG",
+      payment_options: "card, ussd",
+      redirect_url: "/apply/verify",
+      customer: {
+		      email: "{{ email }}",
+		      phone_number: "{{ phone }}",
+		      name: "{{ first_name }} {{ last_name }}",
       },
-      callback: function(response){
-		      window.location.replace("/apply/verify/?ref=" + ref_);
+      onclose: function() {
+        // close modal
       },
-      onClose: function(){
-          alert('window closed');
-      }
+      customizations: {
+        title: "Payloan",
+        description: "Verify Card",
+        logo: "https://assets.piedpiper.com/logo.png",
+      },
     });
-    handler.openIframe();
   }
 </script>
 

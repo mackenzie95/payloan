@@ -10,10 +10,10 @@ import random
 
 
 
-private_key = settings.PAYSTACK_SECRET_KEY
+private_key = settings.R_SECRET_KEY
 
 
-public_key = settings.PAYSTACK_PUBLIC_KEY
+public_key = settings.R_PUBLIC_KEY
 
 
 def home(request):
@@ -157,12 +157,8 @@ def dash(request):
 def verifyPayment(request):
     try:
         user = models.UserProfile.objects.get(user=request.user)
-        ref = request.GET.get("ref")
-        headers = {"Authorization": "Bearer {}".format(private_key)}
-        resp = requests.get("https://api.paystack.co/transaction/verify/" + ref, headers=headers)
-        payment_status = resp.json()["data"]["status"]
-        print(payment_status)
-        if payment_status == "success":
+        payment_status = request.GET.get("status")
+        if payment_status == "successful":
             user.paid = True
             user.save()
             messages.success(request, "Card verified successfully!!")

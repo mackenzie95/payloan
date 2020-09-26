@@ -12,15 +12,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-PAYSTACK_SECRET_KEY = os.environ.get("PAYSTACK_PRIVATE_KEY")
-PAYSTACK_PUBLIC_KEY = os.environ.get("PAYSTACK_PUBLIC_KEY")
+R_SECRET_KEY = os.environ.get("PRIVATE_KEY")
+R_PUBLIC_KEY = os.environ.get("PUBLIC_KEY")
 
 		
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["payloan.herokuapp.com","payloan.com.ng"]
+ALLOWED_HOSTS = ["payloan.herokuapp.com","payloan.com.ng",]
 
 
 # Application definition
