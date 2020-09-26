@@ -136,7 +136,7 @@ def final(request):
     phone = user.phone
     first_name = user.first_name
     last_name = user.last_name
-    context = {'email':email, 'phone':phone,'first_name':first_name, 'last_name':last_name, "key":public_key}
+    context = {'email':email, 'phone':phone,'first_name':first_name, 'last_name':last_name,}
     return render(request, "card.html",context)
 
 
