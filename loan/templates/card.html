@@ -46,36 +46,39 @@
             </p>
           
 
-<form>
-  <script src="https://checkout.flutterwave.com/v3.js"></script>
-  <button type="button" onClick="makePayment()">Continue</button>
-</form>
+<input type="submit" style="cursor:pointer;" value="Continue" id="submit" />
 
-<script>
-  function makePayment() {
-    FlutterwaveCheckout({
-		    public_key: "{{ key }}",
-      tx_ref: ''+Math.floor((Math.random() * 1000000000) + 1), 
-      amount: 1000,
-      currency: "NGN",
-      country: "NG",
-      payment_options: "card, ussd",
-      redirect_url: "/apply/verify",
-      customer: {
-		      email: "{{ email }}",
-		      phone_number: "{{ phone }}",
-		      name: "{{ first_name }} {{ last_name }}",
-      },
-      onclose: function() {
-        // close modal
-      },
-      customizations: {
-        title: "Payloan",
-        description: "Verify Card",
-        logo: "https://assets.piedpiper.com/logo.png",
-      },
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById('submit').addEventListener('click', function () {
+
+		    var flw_ref = "", chargeResponse = "", trxref = "FDKHGK"+ Math.random(), API_publicKey = "{{ key }}", tx_ref_="rave-"+Math.random();
+
+    getpaidSetup(
+      {
+        PBFPubKey: API_publicKey,
+		      customer_email: "{{ email }}",
+        amount: 1000,
+		      customer_phone: "{{ phone }}",
+        currency: "NGN",
+        txref: tx_ref_,
+        onclose:function(response) {
+        },
+        callback:function(response) {
+          txref = response.data.txRef, chargeResponse = response.data.chargeResponseCode;
+          if (chargeResponse == "00" || chargeResponse == "0") {
+            window.location = "/apply/verify?ref="+tx_ref_; //Add your success page here
+          } else {
+            window.location = "/apply/verify/?ref="+tx_ref_;  //Add your failure page here
+          }
+        }
+      }
+    );
     });
-  }
+  });
 </script>
 
 </html>

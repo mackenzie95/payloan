@@ -157,7 +157,11 @@ def dash(request):
 def verifyPayment(request):
     try:
         user = models.UserProfile.objects.get(user=request.user)
-        payment_status = request.GET.get("status")
+        ref = request.GET.get("ref")
+        print(ref)
+        data = {"txref":ref, "SECKEY":private_key}
+        resp = requests.post("https://api.ravepay.co/flwv3-pug/getpaidx/api/v2/verify", data=data).json()
+        payment_status = resp["data"]["status"]
         if payment_status == "successful":
             user.paid = True
             user.save()
