@@ -1,0 +1,52 @@
+{% extends 'form.html' %}
+
+{% block main %}
+
+        <div class="employ">
+        <h1>
+            Employment Details:
+        </h1>
+	<form action="/apply/stage2/" method="POST">
+		{% csrf_token %}
+        <label>Are you Currently Employed?</label>
+        <select required>
+            <option>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+            </select><br><br>
+        <label>where do you work?</label>
+        <select required>
+            <option>select</option>
+            <option>Self employed</option>
+            <option>Public sector</option>
+            <option>Private sector</option>
+            <option>Financial institution</option>
+            <option>Others</option>
+            </select><br><br>
+            <label>How long have you work there?</label>
+            <select required>
+                <option>Select</option>
+                <option>Less than 2 years</option>
+                <option>Less than 5 years</option>
+                <option>Less than 10 years</option>
+                <option>More than 10 years</option>
+            </select><br><br><label id="input">Name of the Company.</label><br>
+            <input type="text" required><br><br>
+            <label>Name of Employer</label><br>
+            <input type="text" required><br><br>
+            <label>Employer's phone number?</label><br>
+            <input type="number" required><br><br>
+            <label>Employer's Email Address?</label><br>
+            <input type="email" required><br><br>
+            <label>Where is the Company located?</label><br>
+            <input type="text" required><br><br>
+            <label>Upload your ID Card</label><br>
+            <input type="file" required><br><br>
+            <label>Upload a passport</label>
+            <input type="file" required><br><br>
+            <button type="submit">Next</button>
+            </div>
+	</form>
+        <br>
+       
+	{% endblock %}

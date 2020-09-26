@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1">
+        <title>Pay Loan</title>
+	<link rel="stylesheet" href="{% static 'mypage.css' %}">
+    </head>
+    <body>
+        
+	    <div id="img"><a href="/"><img style="width:140px; height:60px;" src="{% static 'images/loan2.png' %}"></a>
+           <a href="/login"><button style="margin-top:15px; background-color:#E0C65F; margin-left:10px;">Log In</button></a>
+           <a style="margin-top:10px; padding-left:20px;" href="/apply/stage1"><button style="background-color:#E0C65F; margin-top:5px;">Register</button></a></div>
+
+	    {% block main %}
+	    {% endblock %}
+
+
+	    
+        <div id="bottom">
+            Payloan financial service limited, all right reserved.
+            <div style="text-align:center; padding-top:0px; font-size:10px;">©2020</div>
+        </div>
+    </body>
+</html>

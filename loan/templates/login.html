@@ -1,0 +1,21 @@
+{% extends 'form.html' %}
+
+{% block main %}
+
+<h1 style="text-align:center;"><br><br>
+            Login
+        </h1>
+        <div class="login" style="text-align:center;">
+        <form action="/login/" method="POST">
+		{% csrf_token %}
+            <label>Phone number</label><br>
+            <input id="log" name="phone" type="text" placeholder="phone number"><br><br>
+            <label>Password</label><br>
+            <input id="log" type="password" name="password" placeholder="password"><br><br>
+            <button type="submit">Log In</button>
+        </form>
+            <p><a href="#">Forget password</a></p>
+            </div>
+        <br><br>
+      
+	{% endblock %}

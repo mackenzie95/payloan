@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1">
+        
+        <title>Payloan | Loan Application</title>
+	<link rel="stylesheet" href="{% static 'form.css' %}">
+    </head>
+    <body>
+	    <div id="img"><a href="/"><img style="width:140px; height:60px; padding-left:25px;" src="{% static 'images/loan2.png' %}"></a><a href="/logout"><button id="home">Logout</button></a></div>
+	    <br>
+	    <br>
+	    <br>
+	    <br>
+	
+
+<div class="employ">
+        <h1>
+            You are few steps away to getting your loan!
+        </h1>
+ <div id="note">Note: Before we can give you the loan you requested for,
+             we need to; (1) verify your bank account: this is to know if you are 
+             eligible for the loan. (2) verify your card: this is to enable you to 
+             payback the loan in due time.
+            <p>Interest rate: Our company charges 10% interest for amounts below N1million, 
+                while we give you discount of 2% if you are applying for a loan of N1million 
+                which means you will only pay 8% interest for a loan of N1million.
+             </p>
+             <p>Also note that payloan is going to deduct N1,000 for card and account verification
+                 after this we will contact you and your loan will be disbursed directly into your bank account.
+                 Example: if you apply for a loan of N10,000 the total payback amount will be N10,000 because you were previously
+                 charge for card and account verification, this means; if you applied for a loan of N20,000 your total payback amount will 
+                 be N21,000 because 5% of the interest was deducted for card and bank verification.
+                 <p>if your loan request is declined we will reverse the N1,000 
+                 we debited into the account number you provided.</p>
+             </p>
+             <p>Applying for loan from N500,000 and above usually take 2-7 working days to be approved.</p>
+            </div>
+
+
+                     <p>If you are satisfy with the condition above click on the button to continue<br>
+            </p>
+          
+<form >
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <button type="button" onclick="payWithPaystack()"> Continue </button> 
+</form>
+<br>
+<br>
+</div>
+<script>
+	var ref_ = ''+Math.floor((Math.random() * 1000000000) + 1); // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+	
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+		    key: '{{ key }}',
+		    email: '{{ email }}',
+      amount: 100000,
+	ref: ref_,
+      currency: "NGN",
+		    firstname: '{{ first_name }}',
+		    lastname: '{{ last_name }}',
+      // label: "Optional string that replaces customer email"
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Mobile Number",
+                variable_name: "mobile_number",
+			    value: "{{ phone }}"
+            }
+         ]
+      },
+      callback: function(response){
+		      window.location.replace("/apply/verify/?ref=" + ref_);
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Payloan | Dashboard</title>
+	<link rel="stylesheet" href="{% static 'form.css' %}">
+    </head>
+    <body>
+	    <div id="img"><a href="mypage.html"><img style="width:140px; height:60px; padding-left:35px;" src="{% static 'images/loan2.png' %}"></a>
+            <a href="/logout/"><button id="home">Logout</button></a>
+        </div><br><br><br><br>
+        <div style="padding-bottom:130px;"class="login">
+
+        <h1 style="text-align:left; color:#335cce;">
+		<div class="messages" style="color:green; padding-left:10px; font-size:15px;">
+		    {% if messages %}
+		    {% for message in messages %}
+		    <strong>{{ message }}</strong>
+		    {% endfor %}
+		    {% endif %}
+
+	    </div>
+	    <div style="font-size:15px; color:black; text-decoration:None;">
+		    Dear <strong>{{ name | upper }} </strong>, your loan request has been received and is been processed. You'll get a response shortly.
+	    <br>
+	    <br>
+	    </div>
+
+	              Pending loans:
+        </h1>
+	<h3 style="font-style:italic;">Loan amount:</h3> N{{ amount }}
+	<h3 style="font-style:italic;">Status:</h3>  Pending
+	<h3 style="font-style:italic;">Application Date:</h3> {{ date_ }}
+         
+            </div>
+            
+            <div style="margin-left:0px;" id="contact">
+            <li><a id="abt" href="/about">About</a></li>
+           <li><a id="abt" href="/contact">Contact</a></li>
+            <li><a id="abt" href="/offices">Our Offices</a></li>
+            <li><a id="abt" href="/tos">Terms and Conditions</a></li>
+            <li><a id="abt" href="/privacy">Privacy policy</a></li>
+        </div>
+        <div id="bottom">
+            Payloan financial service limited, all right reserved.
+            <div style="text-align:center; padding-top:0px; font-size:10px;">©2020</div>
+        </div>
+    </body>
+</html>

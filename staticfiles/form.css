@@ -1,0 +1,105 @@
+body {
+    background-color:antiquewhite;
+    padding-bottom:0px;
+    margin:0px;
+}
+
+.body {
+    background-color:azure;
+    border-radius: 15px;
+    margin:10px;
+    padding:10px;
+}
+
+#head {
+    padding-left:10px;
+}
+
+#input {
+    font-size:17px;
+}
+
+input {
+    background-color: whitesmoke;
+    height: 1.5em;
+    border-radius:10px;
+    padding-left:8px;
+}
+
+#img {
+    background-color:#b3cce6;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+#home {
+    background-color:bisque;
+    margin-right:30px;
+    margin-top:25px;
+}
+
+#contact {
+    background-color:black;
+    color:white;
+    margin-left:10px;
+    padding-left:5px;
+    padding-top:30px;
+}
+
+#bottom {
+    background-color:black;
+    color:white;
+    padding-top:50px;
+    font-size:12px;
+    margin-bottom:0px;
+    text-align: center;
+    padding-bottom:30px;
+    padding-left:8px;
+}
+
+#abt {
+    text-decoration: none;
+    color:white;
+}
+
+.employ {
+    background-color:azure;
+    border-radius: 15px;
+    padding:5px;
+    margin:8px;
+    padding-bottom:30px;
+}
+
+#password {
+    margin-top:10px;
+}
+
+#note {
+    font-size:13px;
+    color:red;
+    font-style: italic;
+}
+
+#login {
+    background-color:#b3cce6;
+    display: flex;
+    justify-content: space-between;
+}
+
+#log {
+    border-radius: 0px;
+    height:3em;
+    width:200px;
+    padding-left:5px;
+}
+
+.login {
+    background-color:aliceblue;
+    border-radius:10px;
+    padding:15px;
+    margin:10px;
+}
+

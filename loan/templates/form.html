@@ -1,0 +1,156 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1">
+        
+        <title>Payloan | Loan Application</title>
+	<link rel="stylesheet" href="{% static 'form.css' %}">
+    </head>
+    <body>
+	    <div id="img"><a href="/"><img style="width:140px; height:60px; padding-left:25px;" src="{% static 'images/loan2.png' %}"></a><a href="/"><button id="home">HOME</button></a></div>
+	    <br>
+	    <br>
+	    <br>
+	    <br>
+	    <div class="messages" style="color:red; padding-left:10px; font-size:15px;">
+		    {% if messages %}
+		    {% for message in messages %}
+		    <strong>{{ message }}</strong>
+		    {% endfor %}
+		    {% endif %}
+
+	    </div>
+	    {% block main %}
+        <h1 id="head">
+           Enter your details to apply for a loan below:
+        </h1>
+        <h2 id="head">Personal Details:</h2>
+        <div>
+          <form action="/apply/stage1/" method="POST" class="body">
+		  {% csrf_token %}
+        <label id="input">First name</label><br>
+        <input type="text" placeholder="first name" name="first_name" required><br><br>
+        <label id="input">Last name</label><br>
+        <input type="text" placeholder="last name" name="last_name" required><br><br>
+        <label id="input">Date of birth</label><br>
+        <input type="date"><br><br>
+        <label id="input">Email address</label><br>
+        <input type="email" placeholder="email address" name="email" required><br><br>
+        <label id="input">Phone number</label><br>
+        <input type="number" placeholder="phone number" name="phone" required><br><br>
+        <label id="input">State of origin</label><br>
+        <select required>
+            <option>Abia State</option>
+<option>Adamawa State</option>
+<option>Akwa Ibom State</option>
+<option>Anambra State</option>
+<option>Bauchi State</option>
+<option>Bayelsa State</option>
+<option>Benue State</option>
+<option>Borno State</option>
+<option>Cross River State</option>
+<option>Delta State</option>
+<option>Ebonyi State</option>
+<option>Edo State</option>
+<option>Ekiti State</option>
+<option>Enugu State</option>
+<option>Gombe State</option>
+<option>Imo State</option>
+<option>Jigawa State</option>
+<option>Kaduna State</option>
+<option>Kano State</option>
+<option>Katsina State</option>
+<option>Kebbi State</option>
+<option>Kogi State</option>
+<option>Kwara State</option>
+<option>Lagos State</option>
+<option>Nasarawa State</option>
+<option>Niger State</option>
+<option>Ogun State</option>
+<option>Ondo State</option>
+<option>Osun State</option>
+<option>Oyo State</option>
+<option>Plateau State</option>
+<option>Rivers State</option>
+<option>Sokoto State</option>
+<option>Taraba State</option>
+<option>Yobe State</option>
+<option>Zamfara State</option>
+<option>Federal Capital Territory</option>
+            
+        </select>
+        <br><br>
+        <label id="input">Local government</label><br>
+        <input type="text" placeholder="local government" required><br><br>
+         <label id="input">place of birth</label><br>
+              <input type="text" placeholder="place of birth" required><br><br>
+              <label id="input">State of Residence</label><br>
+              <select required> 
+                 <option>Abia State</option>
+<option>Adamawa State</option>
+<option>Akwa Ibom State</option>
+<option>Anambra State</option>
+<option>Bauchi State</option>
+<option>Bayelsa State</option>
+<option>Benue State</option>
+<option>Borno State</option>
+<option>Cross River State</option>
+<option>Delta State</option>
+<option>Ebonyi State</option>
+<option>Edo State</option>
+<option>Ekiti State</option>
+<option>Enugu State</option>
+<option>Gombe State</option>
+<option>Imo State</option>
+<option>Jigawa State</option>
+<option>Kaduna State</option>
+<option>Kano State</option>
+<option>Katsina State</option>
+<option>Kebbi State</option>
+<option>Kogi State</option>
+<option>Kwara State</option>
+<option>Lagos State</option>
+<option>Nasarawa State</option>
+<option>Niger State</option>
+<option>Ogun State</option>
+<option>Ondo State</option>
+<option>Osun State</option>
+<option>Oyo State</option>
+<option>Plateau State</option>
+<option>Rivers State</option>
+<option>Sokoto State</option>
+<option>Taraba State</option>
+<option>Yobe State</option>
+<option>Zamfara State</option>
+<option>Federal Capital Territory</option>
+              </select><br><br>
+              <label id="input">Local government</label><br>
+              <input type="text" placeholder="local government" required><br><br>
+              <label>Residence Address</label><br>
+              <input type="text">
+              <br><br>
+            <button type="submit">Next</button>
+            </form>
+            <br><br>
+
+	    {% endblock %}
+            
+           <div style="margin-left:0px;" id="contact">
+            <li><a id="abt" href="/about">About</a></li>
+           <li><a id="abt" href="/contact">Contact</a></li>
+            <li><a id="abt" href="/offices">Our Offices</a></li>
+            <li><a id="abt" href="/tos">Terms and Conditions</a></li>
+            <li><a id="abt" href="/privacy">Privacy policy</a></li>
+        </div>
+        <div id="bottom">
+            Payloan financial service limited, all right reserved.
+            <div style="text-align:center; padding-top:0px; font-size:10px;">©2020</div>
+        </div>
+        
+        
+    </body>
+</html>
