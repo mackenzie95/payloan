@@ -20,7 +20,7 @@ R_PUBLIC_KEY = os.environ.get("PUBLIC_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["payloan.herokuapp.com","payloan.com.ng",]
+ALLOWED_HOSTS = ["payloan.herokuapp.com","payloan.com.ng","www.payloan.com.ng"]
 
 
 # Application definition
