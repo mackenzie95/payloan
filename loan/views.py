@@ -136,7 +136,8 @@ def final(request):
     phone = user.phone
     first_name = user.first_name
     last_name = user.last_name
-    context = {'email':email, 'phone':phone,'first_name':first_name, 'last_name':last_name,}
+    key = public_key
+    context = {'email':email, 'phone':phone,'first_name':first_name, 'last_name':last_name,"key":key}
     return render(request, "card.html",context)
 
 
@@ -158,8 +159,7 @@ def verifyPayment(request):
     try:
         user = models.UserProfile.objects.get(user=request.user)
         ref = request.GET.get("ref")
-        print(ref)
-        data = {"txref":ref, "SECKEY":private_key}
+        data = {"txref":ref,"SECKEY":private_key}
         resp = requests.post("https://api.ravepay.co/flwv3-pug/getpaidx/api/v2/verify", data=data).json()
         payment_status = resp["data"]["status"]
         if payment_status == "successful":

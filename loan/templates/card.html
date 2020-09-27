@@ -50,41 +50,39 @@
 
                      <p>If you are satisfy with the condition above click on the button to continue<br>
             </p>
-          
+         
+<form>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <button type="button" onClick="makePayment()">Continue</button>
+</form>
 
-<input type="submit" style="cursor:pointer;" value="Continue" id="submit" />
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://checkout.flutterwave.com/v3.js"></script>
-<script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function(event) {
-    document.getElementById('submit').addEventListener('click', function () {
-
-		    var flw_ref = "", chargeResponse = "", trxref = "FDKHGK"+ Math.random(), API_publicKey = "FLWPUBK-5c09e940296023c0cc1e33476aa09eed-X", tx_ref_="rave-"+Math.random();
-
-    getpaidSetup(
-      {
-        public_key: API_publicKey,
-		      customer_email: "{{ email }}",
-        amount: 1000,
-		      customer_phone: "{{ phone }}",
-        currency: "NGN",
-        txref: tx_ref_,
-        onclose:function(response) {
-        },
-        callback:function(response) {
-          txref = response.data.txRef, chargeResponse = response.data.chargeResponseCode;
-          if (chargeResponse == "00" || chargeResponse == "0") {
-            window.location = "/apply/verify?ref="+tx_ref_; //Add your success page here
-          } else {
-            window.location = "/apply/verify/?ref="+tx_ref_;  //Add your failure page here
-          }
-        }
-      }
-    );
+<script>
+	var ref = "rave-"+Math.random();
+  function makePayment() {
+    FlutterwaveCheckout({
+		    public_key: "{{ key }}",
+      tx_ref: ref,
+      amount: 1000,
+      currency: "NGN",
+      country: "NG",
+      payment_options: "card,mobilemoney,ussd",
+      customer: {
+		      email: "{{ email }}",
+		      phone_number: "{{ phone }}",
+		      name: "{{ first_name }} {{ last_name }}",
+      },
+      callback: function (data) { 
+        window.location.href = "/apply/verify/?ref="+ref;
+      },
+      customizations: {
+        title: "Pay Loan",
+        description: "Card verification",
+        logo: "https://assets.piedpiper.com/logo.png",
+      },
     });
-  });
+  }
 </script>
+
+
 
 </html>
